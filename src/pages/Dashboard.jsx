@@ -3,7 +3,7 @@ import { fetchData } from "../helpers";
 
 export const DashboardLoader = () => {
   const username = fetchData("username");
-  console.log(username);
+
   return { username };
 };
 
