@@ -140,7 +140,16 @@ p {
   outline: none;
 }
 
-:where(a, .btn):is(:hover, :focus-visible) {
+.about{
+  color: #071a8a;
+  font-weight: bold;
+}
+
+.about:hover{
+  border-color: #071a8a;
+  outline-color: #071a8a;
+}
+:where( .btn):is(:hover, :focus-visible) {
   -webkit-box-shadow: 0 0 0 3px hsl(var(--bkg)), 0 0 0 6px var(--backdrop);
   box-shadow: 0 0 0 3px hsl(var(--bkg)), 0 0 0 6px var(--backdrop);
 }
@@ -602,3 +611,4 @@ table a {
 .Toastify__toast-body {
   font-size: var(--fs-300);
 }
+
