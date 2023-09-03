@@ -4,6 +4,7 @@ import Error from "./pages/Error";
 import Main, { MainLoader } from "./layout/Main";
 import Dashboard, { DashboardLoader } from "./pages/Dashboard";
 import About from "./components/About";
+import { LogoutAction } from "./actions/Logout";
 
 const router = createBrowserRouter([
   {
@@ -19,9 +20,13 @@ const router = createBrowserRouter([
         errorElement: <Error />,
       },
       {
-        path: 'about',
-        element: <About/>,
+        path: "about",
+        element: <About />,
         errorElement: <Error />,
+      },
+      {
+        path: "logout",
+        action: LogoutAction,
       },
     ],
   },
