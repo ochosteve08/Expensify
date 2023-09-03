@@ -25,7 +25,7 @@ const Main = () => {
       >
         <Outlet />
       </main>
-      {/* <img src={landing} alt="" /> */}
+     
     </div>
   );
 };
