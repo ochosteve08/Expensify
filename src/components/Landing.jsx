@@ -19,7 +19,7 @@ const Landing = () => {
           height: "100%",
         }}
       >
-        <h1 style={{ color: "#2d1387" }}>Budget with purpose</h1>
+        <h1 style={{ color: "#2d1387", marginBottom:"20px" }}>Budget with purpose</h1>
         <p>
           Spend, save, and give toward what&apos;s important in life
         </p>
