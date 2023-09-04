@@ -1,16 +1,19 @@
 /* eslint-disable react/prop-types */
 
+import AddBudgetForm from "../components/AddBudgetForm"
+
 
 const Home = ({username,budgets}) => {
 
   return (
     <div className="dashboard">
-    <h1>Welcome back, <span className="accent">{username}</span></h1>
+    <h2>Welcome back, <span className="accent">{username}</span></h2>
     <div className="grid-sm">
         {budgets}
         <div className="grid-lg">
             <div className="flex-lg">
-                
+            <AddBudgetForm/>
+
             </div>
         </div>
     </div>
