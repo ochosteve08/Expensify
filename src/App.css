@@ -1,4 +1,4 @@
-/* ⚠️ CSS optimized for the tutorial, not for expanding to a larger site. ⚠️ */
+
 
 *,
 *::before,
@@ -67,6 +67,8 @@ body {
   -webkit-text-size-adjust: 100%;
   background-color: hsl(var(--bkg));
   color: hsl(var(--text));
+  width: 100vw;
+  overflow-x: hidden;
 }
 
 /* typography */
@@ -306,10 +308,11 @@ nav {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   padding: var(--space-md);
   max-width: 1500px;
   margin-inline: auto;
+  margin:0 auto;
 }
 
 nav a {
@@ -387,7 +390,7 @@ select {
   -ms-flex-pack: center;
   width: 100vw;
  
-  gap: var(--space-xl);
+  gap: var(--space-lg);
 }
 
 .intro div {
@@ -615,7 +618,7 @@ transform: scale(1.1);
 .about{
   color: #071a8a;
   font-weight: bold;
-  margin-right: 20px;
+  margin-right: 40px;
 }
 
 .about:hover{

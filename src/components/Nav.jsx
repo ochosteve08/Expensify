@@ -10,7 +10,7 @@ const Nav = ({ username }) => {
         <img className="logo" width={200} src={logo} alt="" />
       </NavLink>
       <NavLink to={"/about"}>
-        <div className="about">About Us</div>
+        <h3 className="about">About Us</h3>
       </NavLink>
       {username && (
         <Form

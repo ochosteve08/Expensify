@@ -2,6 +2,9 @@ import { Form } from "react-router-dom";
 import { FaUserPlus } from "react-icons/fa";
 import Slider from "./Slider";
 
+
+
+
 const Landing = () => {
   return (
     <div>
@@ -13,11 +16,11 @@ const Landing = () => {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          height: "100%", // Adjust the height value accordingly if you have a specific height in mind
+          height: "100%",
         }}
       >
         <h1 style={{ color: "#2d1387" }}>Budget with purpose</h1>
-        <p style={{ padding: "20px" }}>
+        <p>
           Spend, save, and give toward what&apos;s important in life
         </p>
       </div>
