@@ -3,7 +3,7 @@ import { deleteUser } from "../helpers";
 import { toast } from "react-toastify";
 
 export const LogoutAction = async () => {
-   toast.info("account deleted successfully");
+   toast.info("logout successful");
   deleteUser({
     key: "username"
   });

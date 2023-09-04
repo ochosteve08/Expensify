@@ -334,6 +334,11 @@ nav a {
   }
 }
 
+
+.menu{
+  display: flex;
+  margin-right: 40px;
+}
 /* forms */
 label {
   font-size: var(--fs-300);
@@ -618,7 +623,8 @@ transform: scale(1.1);
 .about{
   color: #071a8a;
   font-weight: bold;
-  margin-right: 40px;
+  margin-right: 20px;
+  
 }
 
 .about:hover{

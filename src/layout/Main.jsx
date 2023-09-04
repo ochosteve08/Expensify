@@ -11,7 +11,7 @@ export const MainLoader = () => {
 
 const Main = () => {
   const { username } = useLoaderData();
-  console.log(username)
+
 
   return (
     <div className="layout">
