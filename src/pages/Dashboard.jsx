@@ -59,10 +59,10 @@ export const DashboardAction = async ({ request }) => {
 
 const Dashboard = () => {
   const { username, budgets,expenses } = useLoaderData();
-console.log(expenses)
+
   return (
     <div>
-      {username ? <Home username={username} budgets={budgets} /> : <Landing />}
+      {username ? <Home username={username} budgets={budgets} expenses={expenses} /> : <Landing />}
     </div>
   );
 };

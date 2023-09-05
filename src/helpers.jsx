@@ -37,7 +37,7 @@ export const CreateExpense = ({ name, amount, budgetId }) => {
     createdAt: Date.now(),
     budgetId: budgetId,
   };
-  console.log(newItem);
+
   const existingExpenses = FetchData("expenses") ?? [];
 
   const updatedExpenses = [newItem, ...existingExpenses];
@@ -50,3 +50,20 @@ export const CreateExpense = ({ name, amount, budgetId }) => {
 const MIN_DELAY = 1000; // 1 second, for example
 export const AddBudgetDelay = () =>
   new Promise((res) => setTimeout(res, MIN_DELAY + Math.random() * 1000));
+
+export const FormatCurrency = (amount) => {
+  return amount.toLocaleString("en-NG", {
+    style: "currency",
+    currency: "NGN",
+  });
+};
+
+export const CalculateSpentByBudget = (budgetId) => {
+  const expenses = FetchData("expenses") ?? [];
+  const budgetSpent = expenses.reduce((acc, expense) => {
+    if (expense.budgetId !== budgetId) return acc;
+    return acc + expense.amount;
+  }, 0);
+
+  return budgetSpent;
+};
