@@ -1,11 +1,21 @@
 /* eslint-disable react/prop-types */
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { useFetcher } from "react-router-dom";
 
 const AddExpenseForm = ({ budgets }) => {
   const fetcher = useFetcher();
   const formRef = useRef();
   const focusRef = useRef();
+  const isSubmitting = fetcher.state === "submitting";
+  useEffect(() => {
+    if (!isSubmitting) {
+      // clear form
+      formRef.current.reset();
+      // reset focus
+      focusRef.current.focus();
+    }
+  }, [isSubmitting]);
+
   return (
     <div className="form-wrapper">
       <h3>
@@ -35,17 +45,38 @@ const AddExpenseForm = ({ budgets }) => {
               type="number"
               placeholder="e.g 300"
               step={0.01}
+              inputMode="decimal"
               name="newExpenseAmount"
               id="newExpenseAmount"
               required
             />
           </div>
         </div>
-        <button className="btn btn--dark" >
-        
-              <span>Add Expense </span> <span style={{fontWeight:"bold"}}>+</span>
-           
-        
+        <div className="grid-xs" hidden={budgets.length === 1}>
+          <label htmlFor="newExpenseBudget">Budget Category</label>
+          <select name="newExpenseBudget" id="newExpenseBudget" required>
+            {budgets
+              .sort((a, b) => a.createdAt - b.createdAt)
+              .map((budget) => {
+                return (
+                  <option key={budget.id} value={budget.id}>
+                    {budget.name}
+                  </option>
+                );
+              })}
+          </select>
+        </div>
+
+        <input type="hidden" name="_action" value="createExpense" />
+        <button type="submit" className="btn btn--dark" disabled={isSubmitting}>
+          {isSubmitting ? (
+            <span>Submitting…</span>
+          ) : (
+            <>
+              <span>Add Expense </span>
+              <span style={{ fontWeight: "bold" }}>+</span>
+            </>
+          )}
         </button>
       </fetcher.Form>
     </div>
