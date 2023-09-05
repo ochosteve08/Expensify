@@ -1,17 +1,16 @@
 import { Outlet, useLoaderData } from "react-router-dom";
-import { fetchData } from "../helpers";
+import { FetchData } from "../helpers";
 import landing from "../assets/loan1.png";
 import Nav from "../components/Nav";
 
 export const MainLoader = () => {
-  const username = fetchData("username");
+  const username = FetchData("username");
 
   return { username };
 };
 
 const Main = () => {
   const { username } = useLoaderData();
-
 
   return (
     <div className="layout">
@@ -26,7 +25,6 @@ const Main = () => {
       >
         <Outlet />
       </main>
-     
     </div>
   );
 };
