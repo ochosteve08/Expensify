@@ -62,8 +62,16 @@ export const CalculateSpentByBudget = (budgetId) => {
   const expenses = FetchData("expenses") ?? [];
   const budgetSpent = expenses.reduce((acc, expense) => {
     if (expense.budgetId !== budgetId) return acc;
-    return acc + expense.amount;
+    return (acc += expense.amount);
   }, 0);
 
   return budgetSpent;
 };
+
+
+export const FormatPercentage = (amount )=> {
+  return amount.toLocaleString(undefined, {
+    style: 'percent',
+    minimumFractionDigits: 0
+  })
+}
