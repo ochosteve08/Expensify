@@ -673,3 +673,7 @@ transform: scale(1.1);
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
 }
 
+.dashboard h2 .accent {
+
+ text-transform: capitalize;
+}

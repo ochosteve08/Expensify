@@ -27,6 +27,7 @@ const AddBudgetForm = () => {
             inputMode="decimal"
           />
         </div>
+        <input type="hidden" name="_action" value={"createBudget"} />
         <button className="btn btn--dark">
           Create budget <span>₦</span>
         </button>

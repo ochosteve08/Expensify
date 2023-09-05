@@ -43,6 +43,7 @@ const Landing = () => {
               aria-label="your name"
               autoComplete="given-name"
             />
+          <input type="hidden" name="_action" value={"newUser"} />
             <button type="submit" className="btn btn--dark">
               Create Account <FaUserPlus />
             </button>
