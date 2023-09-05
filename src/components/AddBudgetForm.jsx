@@ -1,10 +1,20 @@
-import { Form } from "react-router-dom";
+import { useRef, useEffect } from "react";
+import { Form, useFetcher } from "react-router-dom";
 
 const AddBudgetForm = () => {
+  const fetcher = useFetcher();
+  const isSubmitting = fetcher.state === "submitting";
+  const formRef = useRef();
+
+  useEffect(() => {
+    if (!isSubmitting) {
+      formRef.current.reset();
+    }
+  }, [isSubmitting]);
   return (
     <div className="form-wrapper">
       <h3 className="h3">Create Budget</h3>
-      <Form method="post" className="grid-sm">
+      <fetcher.Form method="post" className="grid-sm" ref={formRef}>
         <div className="grid-xs">
           <label htmlFor="newBudget">Budget Name:</label>
           <input
@@ -31,7 +41,7 @@ const AddBudgetForm = () => {
         <button className="btn btn--dark">
           Create budget <span>₦</span>
         </button>
-      </Form>
+      </fetcher.Form>
     </div>
   );
 };
