@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import { CreateBudget, FetchData } from "../helpers";
+import { CreateBudget, FetchData, AddBudgetDelay } from "../helpers";
 import Landing from "../components/Landing";
 import { toast } from "react-toastify";
 import Home from "./Home";
@@ -7,11 +7,12 @@ import Home from "./Home";
 export const DashboardLoader = () => {
   const username = FetchData("username");
   const budgets = FetchData("budgets");
-  console.log(budgets)
+
   return { username, budgets };
 };
 
 export const DashboardAction = async ({ request }) => {
+  await AddBudgetDelay();
   const data = await request.formData();
   const { _action, ...values } = Object.fromEntries(data);
 
@@ -23,8 +24,7 @@ export const DashboardAction = async ({ request }) => {
       throw new Error("There was a problem creating your account.");
     }
   }
-console.log(_action)
-console.log(values)
+
   if (_action === "createBudget") {
     try {
            CreateBudget({
