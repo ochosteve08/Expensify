@@ -5,7 +5,7 @@ import AddExpenseForm from "../components/AddExpenseForm";
 
 
 const Home = ({username,budgets}) => {
-console.log(budgets)
+
   return (
     <div className="dashboard">
       <h2>

@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import { CreateBudget, FetchData, AddBudgetDelay } from "../helpers";
+import { CreateBudget, FetchData, AddBudgetDelay,CreateExpense } from "../helpers";
 import Landing from "../components/Landing";
 import { toast } from "react-toastify";
 import Home from "./Home";
@@ -7,8 +7,9 @@ import Home from "./Home";
 export const DashboardLoader = () => {
   const username = FetchData("username");
   const budgets = FetchData("budgets");
+  const expenses = FetchData('expenses')
 
-  return { username, budgets };
+  return { username, budgets,expenses };
 };
 
 export const DashboardAction = async ({ request }) => {
@@ -36,11 +37,29 @@ export const DashboardAction = async ({ request }) => {
       throw new Error("There was a problem creating your budget.");
     }
   }
+
+   if (_action === "createExpense") {
+     try {
+      CreateExpense({
+        name: values.newExpense,
+        amount: values.newExpenseAmount,
+        budgetId: values.newExpenseBudget,
+      });
+      
+       return toast.info(`Expense ${values.newExpense} created`);
+     } catch (e) {
+       throw new Error("There was a problem creating your expense.");
+     }
+   }
+
+  
 };
 
-const Dashboard = () => {
-  const { username, budgets } = useLoaderData();
 
+
+const Dashboard = () => {
+  const { username, budgets,expenses } = useLoaderData();
+console.log(expenses)
   return (
     <div>
       {username ? <Home username={username} budgets={budgets} /> : <Landing />}
