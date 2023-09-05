@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useRef, useEffect } from "react";
 import { useFetcher } from "react-router-dom";
+import { FetchData } from "../helpers";
 
 const AddExpenseForm = ({ budgets }) => {
   const fetcher = useFetcher();
@@ -16,6 +17,18 @@ const AddExpenseForm = ({ budgets }) => {
     }
   }, [isSubmitting]);
 
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    const existingExpenses = FetchData("expenses") ?? [];
+    const newExpenseName = formRef.current.newExpense.value;
+    const isExpenseNameTaken = existingExpenses.some(
+      (expense) => expense.name.toLowerCase() === newExpenseName.toLowerCase()
+    );
+    if (isExpenseNameTaken) {
+      alert("Expense name already taken. Please choose another name.");
+    }
+  };
+
   return (
     <div className="form-wrapper">
       <h3>
@@ -26,7 +39,12 @@ const AddExpenseForm = ({ budgets }) => {
         {""}
         Expense
       </h3>
-      <fetcher.Form method="post" className="grid-sm" ref={formRef}>
+      <fetcher.Form
+        method="post"
+        className="grid-sm"
+        ref={formRef}
+        onSubmit={handleFormSubmit}
+      >
         <div className="expense-inputs">
           <div className="grid-xs">
             <label htmlFor="newExpense">Expense Name:</label>
