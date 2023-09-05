@@ -29,3 +29,7 @@ export const CreateBudget = ({ name, amount }) => {
 
   return updatedBudgets;
 };
+
+const MIN_DELAY = 1000; // 1 second, for example
+export const AddBudgetDelay = () =>
+  new Promise((res) => setTimeout(res, MIN_DELAY + Math.random() * 2000));
