@@ -12,7 +12,6 @@ const generateRandomColor = () => {
 };
 
 export const CreateBudget = ({ name, amount }) => {
-  console.log(name, amount);
   const newItem = {
     name: name,
     amount: +amount,
@@ -20,7 +19,7 @@ export const CreateBudget = ({ name, amount }) => {
     createdAt: Date.now(),
     color: generateRandomColor(),
   };
-  console.log(newItem);
+
   const existingBudgets = FetchData("budgets") ?? [];
 
   const updatedBudgets = [newItem, ...existingBudgets];
@@ -30,6 +29,24 @@ export const CreateBudget = ({ name, amount }) => {
   return updatedBudgets;
 };
 
+export const CreateExpense = ({ name, amount, budgetId }) => {
+  const newItem = {
+    name: name,
+    amount: +amount,
+    id: crypto.randomUUID(),
+    createdAt: Date.now(),
+    budgetId: budgetId,
+  };
+  console.log(newItem);
+  const existingExpenses = FetchData("expenses") ?? [];
+
+  const updatedExpenses = [newItem, ...existingExpenses];
+
+  localStorage.setItem("expenses", JSON.stringify(updatedExpenses));
+
+  return updatedExpenses;
+};
+
 const MIN_DELAY = 1000; // 1 second, for example
 export const AddBudgetDelay = () =>
-  new Promise((res) => setTimeout(res, MIN_DELAY + Math.random() * 2000));
+  new Promise((res) => setTimeout(res, MIN_DELAY + Math.random() * 1000));
