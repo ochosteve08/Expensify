@@ -5,7 +5,7 @@ import AddExpenseForm from "../components/AddExpenseForm";
 import BudgetItem from "../components/BudgetItem";
 
 
-const Home = ({username,budgets, expenses}) => {
+const Home = ({username,budgets}) => {
 
   return (
     <div className="dashboard">
