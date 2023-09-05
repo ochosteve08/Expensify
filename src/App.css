@@ -215,7 +215,7 @@ p {
   -webkit-box-align: start;
   -ms-flex-align: start;
   align-items: start;
-  gap: 4%;
+  gap: 30px;
 }
 
 .flex-md {
@@ -474,6 +474,9 @@ select {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   gap: var(--space-md);
+  background-color: white;
+  padding: 30px;
+  border-radius: var(--round-lg);
 }
 
 .budget {
