@@ -78,3 +78,22 @@ export const FormatPercentage = (amount) => {
 export const FormatDate = (date) => {
   return new Date(date).toLocaleDateString();
 };
+
+export const GetAllMatchingItems = ({ category, key, value }) => {
+  const data = FetchData(category) ?? [];
+
+  const filteredItems = data.filter((item) => item[key] === value);
+
+  return filteredItems; // return the filtered items
+};
+
+export const DeleteExpense = ({ key, id }) => {
+  console.log(key, id);
+  if (id) {
+    const existingExpenses = FetchData(key);
+    console.log(existingExpenses);
+    const newExpenses = existingExpenses.filter((expense) => expense.id !== id);
+    return localStorage.setItem(key, JSON.stringify(newExpenses));
+  }
+  return localStorage.removeItem(key);
+};

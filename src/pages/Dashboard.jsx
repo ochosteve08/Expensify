@@ -4,6 +4,7 @@ import {
   FetchData,
   AddBudgetDelay,
   CreateExpense,
+  DeleteExpense,
 } from "../helpers";
 import Landing from "../components/Landing";
 import { toast } from "react-toastify";
@@ -55,6 +56,19 @@ export const DashboardAction = async ({ request }) => {
       return toast.info(`Expense ${values.newExpense} created`);
     } catch (e) {
       throw new Error("There was a problem creating your expense.");
+    }
+  }
+ 
+  if (_action === "deleteExpense") {
+    try {
+      DeleteExpense({
+        key: "expenses",
+        id: values.expenseId,
+      });
+
+      return toast.info(`Expense deleted`);
+    } catch (e) {
+      throw new Error("There was a problem deleting your expense.");
     }
   }
 };
