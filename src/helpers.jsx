@@ -12,7 +12,6 @@ const generateRandomColor = () => {
 };
 
 export const CreateBudget = ({ name, amount }) => {
-
   const newItem = {
     name: name,
     amount: +amount,
@@ -31,7 +30,6 @@ export const CreateBudget = ({ name, amount }) => {
 };
 
 export const CreateExpense = ({ name, amount, budgetId }) => {
-
   const newItem = {
     name: name,
     amount: +amount,
@@ -70,10 +68,13 @@ export const CalculateSpentByBudget = (budgetId) => {
   return budgetSpent;
 };
 
-
-export const FormatPercentage = (amount )=> {
+export const FormatPercentage = (amount) => {
   return amount.toLocaleString(undefined, {
-    style: 'percent',
-    minimumFractionDigits: 0
-  })
-}
+    style: "percent",
+    minimumFractionDigits: 0,
+  });
+};
+
+export const FormatDate = (date) => {
+  return new Date(date).toLocaleDateString();
+};
