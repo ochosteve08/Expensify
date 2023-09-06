@@ -3,13 +3,13 @@
 import ExpenseItem from "./ExpenseItem";
 
 const Table = ({ expenses }) => {
-  console.log(expenses);
+
   return (
     <div className="table">
       <table>
         <thead>
           <tr>
-            {["Name", "Amount", "Date"].map((title, index) => (
+            {["Name", "Amount", "Date","Budget", "Action"].map((title, index) => (
               <th key={index}>{title}</th>
             ))}
           </tr>

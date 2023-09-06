@@ -10,7 +10,7 @@ export const ExpensesLoader = () => {
 
 const ExpensesPage = () => {
   const { expenses } = useLoaderData();
-  console.log(expenses);
+
   return (
     <div className="grid-lg">
       <h1>All Expenses</h1>
