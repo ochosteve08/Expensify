@@ -18,7 +18,7 @@ const ExpenseItem = ({ expense }) => {
       <td>{FormatCurrency(expense.amount)}</td>
       <td>{FormatDate(expense.createdAt)}</td>
       <td>
-        <Link style={{ "--accent": budget.color }} to={"budgets"}>
+        <Link style={{ "--accent": budget.color }} to={`budget/${budget.id}`}>
           {budget.name}
         </Link>
       </td>
@@ -26,7 +26,13 @@ const ExpenseItem = ({ expense }) => {
         <fetcher.Form method="post">
           <input type="hidden" name="_action" value={"deleteExpense"} />
           <input type="hidden" name="expenseId" value={expense.id} />
-          <button className="btn btn--warning" type="submit" aria-label={`delete ${expense.name} expense`}><FaTrash/></button>
+          <button
+            className="btn btn--warning"
+            type="submit"
+            aria-label={`delete ${expense.name} expense`}
+          >
+            <FaTrash />
+          </button>
         </fetcher.Form>
       </td>
     </>
