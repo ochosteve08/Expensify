@@ -11,6 +11,7 @@ import ExpensesPage, {
   ExpensePageAction,
   ExpensesLoader,
 } from "./pages/ExpensesPage";
+import BudgetDetail, { BudgetLoader } from "./pages/BudgetDetail";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,14 @@ const router = createBrowserRouter([
         element: <ExpensesPage />,
         loader: ExpensesLoader,
         action: ExpensePageAction,
+        errorElement: <Error />,
+      },
+      {
+        path: "budget/:id",
+        element: <BudgetDetail />,
+        loader: BudgetLoader,
+        // action: ExpensePageAction,
+        errorElement: <Error />,
       },
       {
         path: "about",
