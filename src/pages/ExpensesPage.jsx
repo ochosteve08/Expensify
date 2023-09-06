@@ -7,7 +7,6 @@ import { DeleteExpense, AddBudgetDelay } from "../helpers";
 
 export const ExpensesLoader = () => {
   const expenses = FetchData("expenses");
-
   return { expenses };
 };
 
@@ -50,7 +49,7 @@ const ExpensesPage = () => {
           />
         </div>
       ) : (
-        <div>No Expenses</div>
+        <div>No Expenses to show</div>
       )}
     </div>
   );

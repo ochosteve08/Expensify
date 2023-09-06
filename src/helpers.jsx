@@ -81,14 +81,12 @@ export const FormatDate = (date) => {
 
 export const GetAllMatchingItems = ({ category, key, value }) => {
   const data = FetchData(category) ?? [];
-
   const filteredItems = data.filter((item) => item[key] === value);
 
-  return filteredItems; // return the filtered items
+  return filteredItems;
 };
 
 export const DeleteExpense = ({ key, id }) => {
-  console.log(key, id);
   if (id) {
     const existingExpenses = FetchData(key);
     console.log(existingExpenses);
