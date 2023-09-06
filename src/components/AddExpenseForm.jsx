@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useRef, useEffect } from "react";
 import { useFetcher } from "react-router-dom";
-import { FetchData } from "../helpers";
+// import { FetchData } from "../helpers";
 
 const AddExpenseForm = ({ budgets }) => {
   const fetcher = useFetcher();
@@ -17,17 +17,17 @@ const AddExpenseForm = ({ budgets }) => {
     }
   }, [isSubmitting]);
 
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    const existingExpenses = FetchData("expenses") ?? [];
-    const newExpenseName = formRef.current.newExpense.value;
-    const isExpenseNameTaken = existingExpenses.some(
-      (expense) => expense.name.toLowerCase() === newExpenseName.toLowerCase()
-    );
-    if (isExpenseNameTaken) {
-      alert("Expense name already taken. Please choose another name.");
-    }
-  };
+  // const handleFormSubmit = (event) => {
+  //   event.preventDefault();
+  //   const existingExpenses = FetchData("expenses") ?? [];
+  //   const newExpenseName = formRef.current.newExpense.value;
+  //   const isExpenseNameTaken = existingExpenses.some(
+  //     (expense) => expense.name.toLowerCase() === newExpenseName.toLowerCase()
+  //   );
+  //   if (isExpenseNameTaken) {
+  //     alert("Expense name already taken. Please choose another name.");
+  //   }
+  // };
 
   return (
     <div className="form-wrapper">
@@ -43,7 +43,7 @@ const AddExpenseForm = ({ budgets }) => {
         method="post"
         className="grid-sm"
         ref={formRef}
-        onSubmit={handleFormSubmit}
+        // onSubmit={handleFormSubmit}
       >
         <div className="expense-inputs">
           <div className="grid-xs">

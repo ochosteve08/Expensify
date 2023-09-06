@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import { useFetcher } from "react-router-dom";
-import { FetchData } from "../helpers";
+// import { FetchData } from "../helpers";
 
 const AddBudgetForm = () => {
   const fetcher = useFetcher();
@@ -15,17 +15,18 @@ const AddBudgetForm = () => {
     }
   }, [isSubmitting]);
 
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    const existingBudgets = FetchData("budgets") ?? [];
-    const newBudgetName = formRef.current.newBudget.value;
-    const isBudgetNameTaken = existingBudgets.some(
-      (budget) => budget.name.toLowerCase() === newBudgetName.toLowerCase()
-    );
-    if (isBudgetNameTaken) {
-      alert("Budget name already taken. Please choose another name.");
-    }
-  };
+  // const handleFormSubmit = (event) => {
+  //   event.preventDefault();
+  //   console.log("submit");
+  //   const existingBudgets = FetchData("budgets") ?? [];
+  //   const newBudgetName = formRef.current.newBudget.value;
+  //   const isBudgetNameTaken = existingBudgets.some(
+  //     (budget) => budget.name.toLowerCase() === newBudgetName.toLowerCase()
+  //   );
+  //   if (isBudgetNameTaken) {
+  //     alert("Budget name already taken. Please choose another name.");
+  //   }
+  // };
 
   return (
     <div className="form-wrapper">
@@ -34,7 +35,7 @@ const AddBudgetForm = () => {
         method="post"
         className="grid-sm"
         ref={formRef}
-        onSubmit={handleFormSubmit}
+        // onSubmit={handleFormSubmit}
       >
         <div className="grid-xs">
           <label htmlFor="newBudget">Budget Name:</label>
