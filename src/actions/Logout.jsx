@@ -7,5 +7,11 @@ export const LogoutAction = async () => {
   DeleteUser({
     key: "username",
   });
+  DeleteUser({
+    key: "expenses",
+  });
+  DeleteUser({
+    key: "budgets",
+  });
   return redirect("/");
 };
