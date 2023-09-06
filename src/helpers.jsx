@@ -31,7 +31,7 @@ export const CreateBudget = ({ name, amount }) => {
 };
 
 export const CreateExpense = ({ name, amount, budgetId }) => {
-    console.log({ name, amount, budgetId });
+
   const newItem = {
     name: name,
     amount: +amount,
