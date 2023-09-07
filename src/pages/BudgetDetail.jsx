@@ -1,8 +1,14 @@
 import { useLoaderData } from "react-router-dom";
-import { GetAllMatchingItems } from "../helpers";
+import {
+  GetAllMatchingItems,
+  AddBudgetDelay,
+  CreateExpense,
+  DeleteExpense,
+} from "../helpers";
 import BudgetItem from "../components/BudgetItem";
 import AddExpenseForm from "../components/AddExpenseForm";
 import Table from "../components/Table";
+import { toast } from "react-toastify";
 
 export const BudgetLoader = async ({ params }) => {
   const budget = await GetAllMatchingItems({
@@ -23,9 +29,42 @@ export const BudgetLoader = async ({ params }) => {
   return { budget, expenses };
 };
 
+export const BudgetAction = async ({ request }) => {
+  await AddBudgetDelay();
+  const data = await request.formData();
+  const { _action, ...values } = Object.fromEntries(data);
+  console.log(_action);
+  if (_action === "createExpense") {
+    try {
+      CreateExpense({
+        name: values.newExpense,
+        amount: values.newExpenseAmount,
+        budgetId: values.newExpenseBudget,
+      });
+
+      return toast.info(`Expense ${values.newExpense} created`);
+    } catch (e) {
+      throw new Error("There was a problem creating your expense.");
+    }
+  }
+
+  if (_action === "deleteExpense") {
+    try {
+      DeleteExpense({
+        key: "expenses",
+        id: values.expenseId,
+      });
+
+      return toast.info(`Expense deleted`);
+    } catch (e) {
+      throw new Error("There was a problem deleting your expense.");
+    }
+  }
+};
+
 const BudgetDetail = () => {
   const { budget, expenses } = useLoaderData();
-  console.log(expenses);
+
   return (
     <div className="grid-lg">
       <h2>
