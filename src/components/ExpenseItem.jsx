@@ -4,7 +4,7 @@ import { Link, useFetcher } from "react-router-dom";
 import { FormatCurrency, FormatDate, GetAllMatchingItems } from "../helpers";
 import { FaTrash } from "react-icons/fa";
 
-const ExpenseItem = ({ expense }) => {
+const ExpenseItem = ({ expense, showBudget }) => {
   const fetcher = useFetcher();
   const budget = GetAllMatchingItems({
     category: "budgets",
@@ -17,11 +17,13 @@ const ExpenseItem = ({ expense }) => {
       <td>{expense.name}</td>
       <td>{FormatCurrency(expense.amount)}</td>
       <td>{FormatDate(expense.createdAt)}</td>
-      <td>
-        <Link style={{ "--accent": budget.color }} to={`budget/${budget.id}`}>
-          {budget.name}
-        </Link>
-      </td>
+      {showBudget && (
+        <td>
+          <Link style={{ "--accent": budget.color }} to={`budget/${budget.id}`}>
+            {budget.name}
+          </Link>
+        </td>
+      )}
       <td>
         <fetcher.Form method="post">
           <input type="hidden" name="_action" value={"deleteExpense"} />
