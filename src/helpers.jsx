@@ -2,9 +2,7 @@ export const FetchData = (key) => {
   return JSON.parse(localStorage.getItem(key));
 };
 
-export const DeleteUser = ({ key }) => {
-  return localStorage.removeItem(key);
-};
+
 
 const generateRandomColor = () => {
   const existingBudgetLength = FetchData("budgets")?.length ?? 0;
@@ -21,11 +19,8 @@ export const CreateBudget = ({ name, amount }) => {
   };
 
   const existingBudgets = FetchData("budgets") ?? [];
-
   const updatedBudgets = [newItem, ...existingBudgets];
-
   localStorage.setItem("budgets", JSON.stringify(updatedBudgets));
-
   return updatedBudgets;
 };
 
@@ -39,11 +34,8 @@ export const CreateExpense = ({ name, amount, budgetId }) => {
   };
 
   const existingExpenses = FetchData("expenses") ?? [];
-
   const updatedExpenses = [newItem, ...existingExpenses];
-
   localStorage.setItem("expenses", JSON.stringify(updatedExpenses));
-
   return updatedExpenses;
 };
 
@@ -82,16 +74,15 @@ export const FormatDate = (date) => {
 export const GetAllMatchingItems = ({ category, key, value }) => {
   const data = FetchData(category) ?? [];
   const filteredItems = data.filter((item) => item[key] === value);
-
   return filteredItems;
 };
 
-export const DeleteExpense = ({ key, id }) => {
+export const DeleteItem = ({ key, id }) => {
   if (id) {
     const existingExpenses = FetchData(key);
-    console.log(existingExpenses);
     const newExpenses = existingExpenses.filter((expense) => expense.id !== id);
     return localStorage.setItem(key, JSON.stringify(newExpenses));
   }
   return localStorage.removeItem(key);
 };
+

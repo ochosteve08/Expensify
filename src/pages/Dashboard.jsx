@@ -4,7 +4,7 @@ import {
   FetchData,
   AddBudgetDelay,
   CreateExpense,
-  DeleteExpense,
+  DeleteItem,
 } from "../helpers";
 import Landing from "../components/Landing";
 import { toast } from "react-toastify";
@@ -61,7 +61,7 @@ export const DashboardAction = async ({ request }) => {
  
   if (_action === "deleteExpense") {
     try {
-      DeleteExpense({
+      DeleteItem({
         key: "expenses",
         id: values.expenseId,
       });

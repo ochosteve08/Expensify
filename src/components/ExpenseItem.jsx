@@ -19,8 +19,11 @@ const ExpenseItem = ({ expense, showBudget }) => {
       <td>{FormatDate(expense.createdAt)}</td>
       {showBudget && (
         <td>
-          <Link style={{ "--accent": budget.color }} to={`budget/${budget.id}`}>
-            {budget.name}
+          <Link
+            style={{ "--accent": budget?.color }}
+            to={`budget/${budget?.id}`}
+          >
+            {budget?.name}
           </Link>
         </td>
       )}
