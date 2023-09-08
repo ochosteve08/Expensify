@@ -668,9 +668,6 @@ transform: scale(1.1);
 
 
 
-
-
-
 .carousel__image::before {
   content: "";
   position: absolute;
@@ -684,4 +681,43 @@ transform: scale(1.1);
 .dashboard h2 .accent {
 
  text-transform: capitalize;
+}
+
+footer {
+   margin-top: 5%;
+    background: none;
+    color: var(--color6);
+    font-weight: 300;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+  
+}
+
+footer > div {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 2rem;
+    transition: .5s ease-in-out;
+}
+footer > div > a:hover, a:active {
+    color: var(--color2);
+    transition: .5s ease-in-out;
+}
+footer > p{
+ 
+   font-weight: 500;
+    
+  
+}
+
+@media only screen and (max-width: 480px) {
+   footer{
+    margin-top: 0px;
+   }
+    footer > div {
+        font-size: 1.5rem;
+    }
+
 }
