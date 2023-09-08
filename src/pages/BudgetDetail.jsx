@@ -3,7 +3,7 @@ import {
   GetAllMatchingItems,
   AddBudgetDelay,
   CreateExpense,
-  DeleteExpense,
+  DeleteItem,
 } from "../helpers";
 import BudgetItem from "../components/BudgetItem";
 import AddExpenseForm from "../components/AddExpenseForm";
@@ -50,7 +50,7 @@ export const BudgetAction = async ({ request }) => {
 
   if (_action === "deleteExpense") {
     try {
-      DeleteExpense({
+      DeleteItem({
         key: "expenses",
         id: values.expenseId,
       });
@@ -71,7 +71,7 @@ const BudgetDetail = () => {
         <span className="accent">{budget.name}</span> Overview
       </h2>
       <div className="flex-lg">
-        <BudgetItem budget={budget} />
+        <BudgetItem budget={budget} showDelete={true} />
         <AddExpenseForm budgets={[budget]} />
       </div>
       {expenses && expenses.length > 0 && (

@@ -2,7 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import { FetchData } from "../helpers";
 import Table from "../components/Table";
 import { toast } from "react-toastify";
-import { DeleteExpense, AddBudgetDelay } from "../helpers";
+import { DeleteItem, AddBudgetDelay } from "../helpers";
 
 
 export const ExpensesLoader = () => {
@@ -18,7 +18,7 @@ export const ExpensePageAction = async ({ request }) => {
 
   if (_action === "deleteExpense") {
     try {
-      DeleteExpense({
+      DeleteItem({
         key: "expenses",
         id: values.expenseId,
       });
