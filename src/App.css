@@ -65,7 +65,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-  background-color: hsl(var(--bkg));
+  /* background-color: hsl(var(--bkg)); */
+  background: rgba(255, 182, 193, 0.1);
+
   color: hsl(var(--text));
   width: 100vw;
   overflow-x: hidden;
@@ -691,7 +693,8 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-   
+   background: rgba(255, 182, 193, 0.1)
+;
   
 }
 
