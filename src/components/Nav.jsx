@@ -6,12 +6,14 @@ const Nav = ({ username }) => {
   return (
     <nav>
       <NavLink to={"/"} aria-label="Go to home">
-        <img className="logo" width={200} src={logo} alt="" />
+        <img className="logo" width={180} src={logo} alt="" />
       </NavLink>
       <div className="menu">
-        {!username && <NavLink to={"/about"}>
-          <h3 className="about">About Us</h3>
-        </NavLink>}
+        {!username && (
+          <NavLink to={"/about"}>
+            <h4 className="about">About</h4>
+          </NavLink>
+        )}
         {username && (
           <Form
             method="post"

@@ -3,9 +3,6 @@ import { FaUserPlus } from "react-icons/fa";
 import Slider from "./Slider";
 import Footer from "./Footer";
 
-
-
-
 const Landing = () => {
   return (
     <>
